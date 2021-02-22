@@ -27,6 +27,7 @@
 		--tadashi_svelte_editor_quill_border: 1px solid gray;
 		--tadashi_svelte_editor_quill_height: auto;
 	}
+
 	._tadashi_svelte_editor_quill {
 		border: var(--tadashi_svelte_editor_quill_border);
 		height: var(--tadashi_svelte_editor_quill_height);

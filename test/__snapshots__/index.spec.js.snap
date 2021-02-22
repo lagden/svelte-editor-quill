@@ -4,7 +4,7 @@ exports[`Editor Quill should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="_tadashi_svelte_editor_quill svelte-6djrvn ql-container ql-bubble"
+      class="_tadashi_svelte_editor_quill svelte-1ucoo9 ql-container ql-bubble"
     >
       <div
         class="ql-editor ql-blank"

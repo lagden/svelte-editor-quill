@@ -1,3 +1,4 @@
+import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import svelte from 'rollup-plugin-svelte'
 import pkg from './package.json'
@@ -15,13 +16,14 @@ export default {
 			format: 'es'
 		},
 		{
+			name,
 			file: `dist/index.umd.js`,
-			format:'umd',
-			name
+			format:'umd'
 		}
 	],
 	plugins: [
-		resolve(),
-		svelte()
+		commonjs(),
+		svelte({emitCss: false}),
+		resolve({browser: true})
 	]
 }
