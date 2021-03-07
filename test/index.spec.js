@@ -1,3 +1,5 @@
+/* globals describe, afterEach, test, expect */
+
 import {cleanup, render} from '@testing-library/svelte'
 import {Editor} from '../src'
 

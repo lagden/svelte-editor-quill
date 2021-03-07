@@ -4,7 +4,7 @@ export function quill(node, options) {
 	const q = new Quill(node, {
 		modules: {
 			toolbar: [
-				[{'header': 1}, {'header': 2}],
+				[{header: 1}, {header: 2}],
 				['bold', 'italic', 'underline', 'strike'],
 				['link', 'code-block']
 			]
