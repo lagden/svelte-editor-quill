@@ -1,4 +1,3 @@
-import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import svelte from 'rollup-plugin-svelte'
 import pkg from './package.json'
@@ -9,20 +8,26 @@ const name = pkg.name
 	.replace(/-\w/g, m => m[1].toUpperCase())
 
 export default {
+	external: ['quill'],
 	input: 'src/index.js',
 	output: [
 		{
 			file: 'dist/index.js',
-			format: 'es'
+			format: 'es',
+			globals: {
+				quill: 'Quill'
+			}
 		},
 		{
 			name,
 			file: 'dist/index.umd.js',
-			format: 'umd'
+			format: 'umd',
+			globals: {
+				quill: 'Quill'
+			}
 		}
 	],
 	plugins: [
-		commonjs(),
 		svelte({emitCss: false}),
 		resolve({browser: true})
 	]
