@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/svelte-editor-quill",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Svelte component",
   "author": "Thiago Lagden",
   "license": "MIT",

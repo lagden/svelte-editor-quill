@@ -8,7 +8,7 @@
 	export {className as class}
 
 	options = {
-		theme: 'bubble',
+		theme: 'snow',
 		...options
 	}
 </script>
