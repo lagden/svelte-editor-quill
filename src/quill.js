@@ -1,5 +1,19 @@
 import Quill from 'quill'
 
+const Clipboard = Quill.import('modules/clipboard')
+const Delta = Quill.import('delta')
+
+class PlainClipboard extends Clipboard {
+	convert(html) {
+		if (typeof html === 'string') {
+			this.container.innerHTML = html
+		}
+		const text = this.container.textContent
+		this.container.innerHTML = ''
+		return new Delta().insert(text)
+	}
+}
+
 export function quill(node, options) {
 	const toolbar = [
 		[{header: 1}, {header: 2}],
@@ -8,6 +22,15 @@ export function quill(node, options) {
 		['link', 'image', 'video'],
 		['code-block', 'clean']
 	]
+
+	const {plainclipboard} = options
+	if (plainclipboard) {
+		Quill.register('modules/clipboard', PlainClipboard, true)
+	}
+
+	if (Reflect.has(options, 'plainclipboard')) {
+		Reflect.deleteProperty(options, 'plainclipboard')
+	}
 
 	const q = new Quill(node, {
 		modules: {

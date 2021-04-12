@@ -13,6 +13,7 @@
 
 Svelte component
 
+
 ## Install
 
 ```
@@ -26,7 +27,21 @@ See an example here: https://svelte.dev/repl/839ad6a3e1e24b149099c704e18df476?ve
 
 ### options
 
+> Type: object  
+> Default: {theme: 'snow'}
+
 See the `options` here: https://quilljs.com/docs/configuration/#options
+
+
+### options.plainclipboard
+
+> Type: boolean  
+> Default: false
+
+Accept only paste plain text.
+
+
+### Sample
 
 ```html
 <svelte:head>
@@ -38,7 +53,8 @@ See the `options` here: https://quilljs.com/docs/configuration/#options
   import {Editor} from '@tadashi/svelte-editor-quill'
 
   const options = {
-    theme: 'snow'
+    theme: 'snow',
+    plainclipboard: true
   }
 
   function onTextChange(event) {
