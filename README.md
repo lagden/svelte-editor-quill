@@ -6,8 +6,8 @@
 
 [npm-img]:         https://img.shields.io/npm/v/@tadashi/svelte-editor-quill.svg
 [npm]:             https://www.npmjs.com/package/@tadashi/svelte-editor-quill
-[ci-img]:          https://github.com/lagden/svelte-editor-quill/workflows/Node.js%20CI/badge.svg
-[ci]:              https://github.com/lagden/svelte-editor-quill/actions?query=workflow%3A%22Node.js+CI%22
+<!-- [ci-img]:          https://github.com/lagden/svelte-editor-quill/workflows/Node.js%20CI/badge.svg -->
+<!-- [ci]:              https://github.com/lagden/svelte-editor-quill/actions?query=workflow%3A%22Node.js+CI%22 -->
 
 ---
 
