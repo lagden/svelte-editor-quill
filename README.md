@@ -23,7 +23,7 @@ $ npm i @tadashi/svelte-editor-quill
 
 ## Usage
 
-See an example here: https://svelte.dev/repl/839ad6a3e1e24b149099c704e18df476?version=3.32.3
+See an example here: https://svelte.dev/repl/839ad6a3e1e24b149099c704e18df476?version=4.2.8
 
 ### options
 
