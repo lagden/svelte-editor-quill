@@ -1,7 +1,7 @@
 # svelte-editor-quill
 
 [![NPM version][npm-img]][npm]
-[![Build Status][ci-img]][ci]
+<!-- [![Build Status][ci-img]][ci] -->
 
 
 [npm-img]:         https://img.shields.io/npm/v/@tadashi/svelte-editor-quill.svg
