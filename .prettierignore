@@ -1,0 +1,15 @@
+*.css
+.*
+bin
+build
+coverage
+dist
+node_modules
+package
+# template.js
+vite.config.js.timestamp-*
+
+*.json
+*.yaml
+*.yml
+*.md

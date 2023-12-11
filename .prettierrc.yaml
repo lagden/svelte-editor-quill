@@ -1,0 +1,23 @@
+arrowParens: avoid
+bracketSameLine: false
+bracketSpacing: false
+# embeddedLanguageFormatting: auto
+insertPragma: false
+htmlWhitespaceSensitivity: css
+printWidth: 120
+proseWrap: preserve
+quoteProps: as-needed
+requirePragma: false
+semi: false
+singleAttributePerLine: false
+singleQuote: true
+trailingComma: all
+tabWidth: 4
+useTabs: true
+
+overrides:
+  - files: '*.svelte'
+    options:
+      parser: svelte
+      plugins:
+        - prettier-plugin-svelte

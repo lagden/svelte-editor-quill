@@ -1,0 +1,12 @@
+.DS_Store
+.svelte-kit
+build
+coverage
+dist
+node_modules
+package
+.env*
+vite.config.js.timestamp-*
+
+coverage/**
+!coverage/lcov.info
