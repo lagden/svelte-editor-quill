@@ -9,20 +9,18 @@ const config = {
 		environment: 'jsdom',
 		threads: false,
 		globals: true,
+		// prettier-ignore
 		coverage: {
-			// prettier-ignore
 			include: ['src/lib/**'],
-			// prettier-ignore
 			reporter: [
 				'text',
 				'text-summary',
 				'lcovonly',
-				'cobertura'
+				'cobertura',
 			],
 		},
 	},
 	build: {
-		sourcemap: true,
 		rollupOptions: {
 			// prettier-ignore
 			external: [

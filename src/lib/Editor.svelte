@@ -1,30 +1,30 @@
 <script>
-	import {onMount, onDestroy} from 'svelte'
+// prettier-ignore
+let {
+	options = {},
+	data = '',
+	class: class_attr,
+} = $$restProps
 
-	export let options = {}
-	export let data = ''
-
-	let className = ''
-	export {className as class}
-
-	options = {
-		theme: 'snow',
-		...options,
+function init(node) {
+	let off
+	import('./quill.js').then(({quill}) => {
+		off = quill(node, data, {
+			theme: 'snow',
+			...options,
+		})
+	})
+	return {
+		destroy() {
+			off && off()
+		},
 	}
-
-	let node
-	let destroy
-
-	onMount(async () => {
-		const {quill} = await import('./quill.js')
-		destroy = quill(node, options)
-	})
-
-	onDestroy(() => {
-		destroy && destroy()
-	})
+}
 </script>
 
-<div class={className}>
-	<div bind:this={node} on:text-change>{@html data}</div>
+<div {...class_attr ? {class: class_attr} : {}}>
+	<div
+		use:init
+		on:text-change
+	></div>
 </div>

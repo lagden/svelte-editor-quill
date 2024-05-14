@@ -7,7 +7,7 @@ import {
 test('general', async ({page}) => {
 	await page.goto('/')
 
-	await setTimeout(1000)
+	await setTimeout(3000)
 
 	await page.screenshot({
 		path: './tests/e2e/__snapshots__/index.spec.js.png',

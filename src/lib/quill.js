@@ -1,20 +1,10 @@
 import Quill from 'quill'
 
-const Clipboard = Quill.import('modules/clipboard')
 const Delta = Quill.import('delta')
 
-class PlainClipboard extends Clipboard {
-	convert(html) {
-		if (typeof html === 'string') {
-			this.container.innerHTML = html
-		}
-		const text = this.container.textContent
-		this.container.innerHTML = ''
-		return new Delta().insert(text)
-	}
-}
+export function quill(node, data, options) {
+	const {plainclipboard = false, ...restOptions} = options
 
-export function quill(node, options) {
 	const toolbar = [
 		[{header: 1}, {header: 2}],
 		['bold', 'italic', 'underline'],
@@ -23,30 +13,32 @@ export function quill(node, options) {
 		['code-block', 'clean'],
 	]
 
-	const {plainclipboard} = options
-	if (plainclipboard) {
-		Quill.register('modules/clipboard', PlainClipboard, true)
-	}
-
-	if (Reflect.has(options, 'plainclipboard')) {
-		Reflect.deleteProperty(options, 'plainclipboard')
-	}
+	// const history = {
+	// 	delay: 2000,
+	// 	maxStack: 500,
+	// 	userOnly: true,
+	// }
 
 	const q = new Quill(node, {
 		modules: {
 			toolbar,
+			// history,
 		},
 		placeholder: 'Digite algo...',
-		...options,
+		...restOptions,
 	})
 
-	const _container = node.querySelector('.ql-editor')
+	if (plainclipboard === true) {
+		q.clipboard.addMatcher(Node.ELEMENT_NODE, n => {
+			const text = n.textContent
+			return new Delta().insert(text)
+		})
+	}
 
 	const onTextChange = () => {
-		const html = _container?.innerHTML ?? ''
 		const customEvent = new CustomEvent('text-change', {
 			detail: {
-				html,
+				html: q.getSemanticHTML(),
 				text: q.getText(),
 			},
 		})
@@ -54,6 +46,9 @@ export function quill(node, options) {
 	}
 
 	q.on('text-change', onTextChange)
+
+	// Init
+	q.clipboard.dangerouslyPasteHTML(data, 'api')
 
 	return () => {
 		q.off('text-change', onTextChange)
