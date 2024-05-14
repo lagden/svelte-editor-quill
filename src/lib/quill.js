@@ -1,6 +1,5 @@
 import Quill from 'quill'
-
-const Delta = Quill.import('delta')
+import {Delta} from 'quill/core.js'
 
 export function quill(node, data, options) {
 	const {plainclipboard = false, ...restOptions} = options

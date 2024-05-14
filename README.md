@@ -7,8 +7,8 @@
 [npm-img]: https://img.shields.io/npm/v/@tadashi/svelte-editor-quill.svg
 [npm]: https://www.npmjs.com/package/@tadashi/svelte-editor-quill
 
-<!-- [ci-img]:          https://github.com/lagden/svelte-editor-quill/workflows/Node.js%20CI/badge.svg -->
-<!-- [ci]:              https://github.com/lagden/svelte-editor-quill/actions?query=workflow%3A%22Node.js+CI%22 -->
+<!-- [ci-img]: https://github.com/lagden/svelte-editor-quill/workflows/Node.js%20CI/badge.svg -->
+<!-- [ci]:     https://github.com/lagden/svelte-editor-quill/actions?query=workflow%3A%22Node.js+CI%22 -->
 
 ---
 
@@ -22,7 +22,7 @@ $ npm i @tadashi/svelte-editor-quill
 
 ## Usage
 
-Example via [REPL](https://svelte.dev/repl/839ad6a3e1e24b149099c704e18df476?version=4.2.8).
+Example via [StackBlitz](https://stackblitz.com/edit/vitejs-vite-ncteky?file=src%2FApp.svelte).
 
 ### options
 

@@ -3,6 +3,7 @@ import {Editor} from '$lib/index.js'
 
 const options = {
 	theme: 'snow',
+	plainclipboard: true,
 }
 
 let data = 'Apenas <b>um</b> show'

@@ -16,8 +16,15 @@ function doc_query(selector) {
 
 test('Editor', async () => {
 	const target = doc_query('main#xxx')
-	// const component = new Editor({target})
-	new Editor({target})
+	new Editor({
+		target,
+		props: {
+			options: {
+				theme: 'snow',
+				plainclipboard: true,
+			},
+		},
+	})
 
 	await setTimeout(3000)
 
