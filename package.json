@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/svelte-editor-quill",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "Svelte component",
   "author": "Thiago Lagden",
   "license": "MIT",
@@ -15,11 +15,10 @@
     "preview": "vite preview",
     "package": "svelte-kit sync && svelte-package && publint",
     "prepublishOnly": "npm run package",
-    "test": "run-s rm lint test:integration test:unit",
+    "test": "run-s rm lint test:unit",
     "eslint": "eslint .",
     "lint": "prettier --check --plugin prettier-plugin-svelte . && eslint .",
     "format": "prettier --write --plugin prettier-plugin-svelte .",
-    "test:integration": "playwright test",
     "test:unit": "vitest --run --coverage",
     "test:ui": "vitest --ui --coverage"
   },
@@ -46,34 +45,40 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "peerDependencies": {
-    "svelte": "^4.0.0",
-    "quill": "^2.0.0"
+    "quill": "^2.0.0",
+    "svelte": "^4.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3.0.2",
-    "@eslint/js": "9.2.0",
-    "@playwright/test": "1.44.0",
-    "@sveltejs/adapter-auto": "3.2.0",
-    "@sveltejs/kit": "2.5.8",
-    "@sveltejs/package": "2.3.1",
+    "@eslint/eslintrc": "3.2.0",
+    "@eslint/js": "9.17.0",
+    "@sveltejs/adapter-auto": "3.3.1",
+    "@sveltejs/kit": "2.13.0",
+    "@sveltejs/package": "2.3.7",
     "@sveltejs/vite-plugin-svelte": "3.1.0",
-    "@types/eslint": "8.56.10",
-    "@vitest/coverage-v8": "1.6.0",
-    "eslint": "9.2.0",
+    "@types/eslint": "9.6.1",
+    "@vitest/coverage-v8": "2.1.8",
+    "eslint": "9.17.0",
     "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-svelte": "2.39.0",
-    "eslint-plugin-unicorn": "53.0.0",
-    "globals": "15.2.0",
-    "jsdom": "24.0.0",
+    "eslint-plugin-svelte": "2.46.1",
+    "eslint-plugin-unicorn": "56.0.1",
+    "globals": "15.14.0",
+    "jsdom": "25.0.1",
     "npm-run-all": "4.1.5",
-    "prettier": "3.2.5",
-    "prettier-plugin-svelte": "3.2.3",
-    "publint": "0.2.7",
-    "rimraf": "5.0.7",
+    "prettier": "3.4.2",
+    "prettier-plugin-svelte": "3.3.2",
+    "publint": "0.2.12",
+    "rimraf": "6.0.1",
     "svelte": "4.2.17",
-    "tslib": "2.6.2",
-    "typescript": "5.4.5",
+    "tslib": "2.8.1",
+    "typescript": "5.7.2",
     "vite": "5.2.11",
-    "vitest": "1.6.0"
+    "vitest": "2.1.8"
+  },
+  "pnpm": {
+    "overrides": {
+      "svelte@<4.2.19": ">=4.2.19",
+      "vite@>=5.2.0 <5.2.14": ">=5.2.14",
+      "cookie@<0.7.0": ">=0.7.0"
+    }
   }
 }

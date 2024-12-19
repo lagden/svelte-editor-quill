@@ -9,7 +9,7 @@ let {
 function init(node) {
 	let off
 	import('./quill.js').then(({quill}) => {
-		off = quill(node, data, {
+		off = quill(node, {
 			theme: 'snow',
 			...options,
 		})
@@ -26,5 +26,7 @@ function init(node) {
 	<div
 		use:init
 		on:text-change
-	></div>
+	>
+		{@html data}
+	</div>
 </div>

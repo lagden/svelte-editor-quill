@@ -1,29 +1,16 @@
-import Quill from 'quill'
-import {Delta} from 'quill/core.js'
+import {default as Quill, Delta} from 'quill'
 
-export function quill(node, data, options) {
+export function quill(node, options) {
 	const {plainclipboard = false, ...restOptions} = options
 
-	const toolbar = [
-		[{header: 1}, {header: 2}],
-		['bold', 'italic', 'underline'],
-		[{list: 'ordered'}, {list: 'bullet'}],
-		['link', 'image', 'video'],
-		['code-block', 'clean'],
-	]
-
-	// const history = {
-	// 	delay: 2000,
-	// 	maxStack: 500,
-	// 	userOnly: true,
-	// }
+	const toolbar = [[{header: [1, 2, 3, false]}], ['bold', 'italic', 'underline'], [{list: 'ordered'}, {list: 'bullet'}], ['link', 'image', 'video'], ['code-block', 'clean']]
 
 	const q = new Quill(node, {
 		modules: {
 			toolbar,
-			// history,
 		},
-		placeholder: 'Digite algo...',
+		formats: ['header', 'bold', 'italic', 'underline', 'list', 'code-block'],
+		placeholder: 'Enter the text...',
 		...restOptions,
 	})
 
@@ -47,7 +34,7 @@ export function quill(node, data, options) {
 	q.on('text-change', onTextChange)
 
 	// Init
-	q.clipboard.dangerouslyPasteHTML(data, 'api')
+	onTextChange()
 
 	return () => {
 		q.off('text-change', onTextChange)

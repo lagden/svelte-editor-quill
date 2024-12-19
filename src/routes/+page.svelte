@@ -6,41 +6,36 @@ const options = {
 	plainclipboard: true,
 }
 
-let data = 'Apenas <b>um</b> show'
 let text = ''
-let html = ''
+let html = 'Apenas <b>um</b> show'
 
 const onTextChange = event => {
-	;({text, html} = event?.detail ?? {})
-	data = html
+	const data = event?.detail ?? {}
+	text = data.text
+	html = data.html
 }
 </script>
 
 <svelte:head>
 	<link
 		rel="stylesheet"
-		href="https://unpkg.com/quill@2.0.2/dist/quill.snow.css"
+		href="https://unpkg.com/quill@2.0.3/dist/quill.snow.css"
 		crossorigin
 	/>
 </svelte:head>
 
 <Editor
 	{options}
-	{data}
+	data={html}
 	on:text-change={onTextChange}
 />
 
 <div>
-	<h3>Text</h3>
+	<h3>plaintext</h3>
 	<pre>{text}</pre>
 </div>
 
 <div>
-	<h3>HTML</h3>
-	<pre>{@html html}</pre>
-</div>
-
-<div>
-	<h3>Data</h3>
-	<pre>{@html data}</pre>
+	<h3>markup</h3>
+	<pre>{html}</pre>
 </div>
