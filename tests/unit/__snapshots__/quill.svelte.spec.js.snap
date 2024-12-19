@@ -2,8 +2,14 @@
 
 exports[`Editor 1`] = `
 {
-  "$destroy": [Function],
   "$on": [Function],
   "$set": [Function],
+  "children": undefined,
+  "class": undefined,
+  "onTextChange": [Function],
+  "options": {
+    "plainclipboard": true,
+    "theme": "snow",
+  },
 }
 `;
