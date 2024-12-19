@@ -4,11 +4,11 @@ import { mount } from 'svelte'
 import { Editor } from '$lib/index.js'
 
 beforeAll(() => {
-	document.body.innerHTML = '<main id="xxx"></main>'
+	globalThis.document.body.innerHTML = '<main id="test"></main>'
 })
 
 function doc_query(selector) {
-	const node = document.querySelector(selector)
+	const node = globalThis.document.querySelector(selector)
 	if (!node) {
 		throw new Error(`No element found for selector: ${selector}`)
 	}
@@ -16,7 +16,7 @@ function doc_query(selector) {
 }
 
 test('Editor', async () => {
-	const target = doc_query('main#xxx')
+	const target = doc_query('main#test')
 	const props = $state({
 		options: {
 			theme: 'snow',
@@ -28,7 +28,4 @@ test('Editor', async () => {
 	await setTimeout(3000)
 
 	expect(app).toMatchSnapshot()
-
-	// const div = doc_query('div.ql-editor')
-	// expect(target).toBeDefined()
 })

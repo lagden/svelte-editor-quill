@@ -18,7 +18,7 @@
 <svelte:head>
 	<link
 		rel="stylesheet"
-		href="https://unpkg.com/quill@2.0.2/dist/quill.snow.css"
+		href="https://unpkg.com/quill@2.0.3/dist/quill.snow.css"
 		crossorigin
 	/>
 </svelte:head>

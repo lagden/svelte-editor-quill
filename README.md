@@ -48,7 +48,7 @@ Accept only paste plain text.
 
 ### E.g.
 
-```html
+```svelte
 <script>
 	import { Editor } from '@tadashi/svelte-editor-quill'
 
