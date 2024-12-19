@@ -1,2 +1,2 @@
-// prettier-ignore
-export {default as Editor} from './Editor.svelte'
+// Reexport your entry components here
+export { default as Editor } from './Editor.svelte'

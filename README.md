@@ -16,8 +16,16 @@ Svelte component
 
 ## Install
 
+Svelte 5
+
 ```
-$ npm i @tadashi/svelte-editor-quill
+$ npm i @tadashi/svelte-editor-quill@4
+```
+
+Svelte Legacy
+
+```
+$ npm i @tadashi/svelte-editor-quill@3
 ```
 
 ## Usage
@@ -26,65 +34,59 @@ Example via [StackBlitz](https://stackblitz.com/edit/vitejs-vite-ncteky?file=src
 
 ### options
 
-> Type: object  
+> Type: object\
 > Default: {theme: 'snow'}
 
 See the more `options` [here](https://quilljs.com/docs/configuration/#options).
 
 ### options.plainclipboard
 
-> Type: boolean  
+> Type: boolean\
 > Default: false
 
 Accept only paste plain text.
 
-### Sample
+### E.g.
 
 ```html
 <script>
-  import {Editor} from '@tadashi/svelte-editor-quill'
+	import { Editor } from '@tadashi/svelte-editor-quill'
 
-  const options = {
-    theme: 'snow',
-  }
+	const options = {
+		theme: 'snow',
+		plainclipboard: true,
+	}
 
-  let data = 'Apenas <b>um</b> show'
-  let text = ''
-  let html = ''
+	let html = $state('<h1>Go!!</h1><p><strong>Initial</strong> value.</p>')
+	let text = $state('')
 
-  const onTextChange = event => {
-    ;({text, html} = event?.detail ?? {})
-    data = html
-  }
+	const onTextChange = (markup, plaintext) => {
+		html = markup
+		text = plaintext
+	}
 </script>
 
 <svelte:head>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/quill@2.0.2/dist/quill.snow.css"
-    crossorigin
-  />
+	<link
+		rel="stylesheet"
+		href="https://unpkg.com/quill@2.0.3/dist/quill.snow.css"
+		crossorigin
+	/>
 </svelte:head>
 
 <Editor
-  {options}
-  {data}
-  on:text-change="{onTextChange}"
-/>
+	{options}
+	{onTextChange}
+>{@html $state.snapshot(html)}</Editor>
 
 <div>
-  <h3>Text</h3>
-  <pre>{text}</pre>
+	<h3>plaintext</h3>
+	<pre>{text}</pre>
 </div>
 
 <div>
-  <h3>HTML</h3>
-  <pre>{@html html}</pre>
-</div>
-
-<div>
-  <h3>Data</h3>
-  <pre>{@html data}</pre>
+	<h3>markup</h3>
+	<pre>{html}</pre>
 </div>
 ```
 

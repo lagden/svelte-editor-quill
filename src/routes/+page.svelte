@@ -1,19 +1,18 @@
 <script>
-import {Editor} from '$lib/index.js'
+	import { Editor } from '$lib/index.js'
 
-const options = {
-	theme: 'snow',
-	plainclipboard: true,
-}
+	const options = {
+		theme: 'snow',
+		plainclipboard: true,
+	}
 
-let data = 'Apenas <b>um</b> show'
-let text = ''
-let html = ''
+	let html = $state('<h1>Go!!</h1><p><strong>Initial</strong> value.</p>')
+	let text = $state('')
 
-const onTextChange = event => {
-	;({text, html} = event?.detail ?? {})
-	data = html
-}
+	const onTextChange = (markup, plaintext) => {
+		html = markup
+		text = plaintext
+	}
 </script>
 
 <svelte:head>
@@ -26,21 +25,15 @@ const onTextChange = event => {
 
 <Editor
 	{options}
-	{data}
-	on:text-change={onTextChange}
-/>
+	{onTextChange}
+>{@html $state.snapshot(html)}</Editor>
 
 <div>
-	<h3>Text</h3>
+	<h3>plaintext</h3>
 	<pre>{text}</pre>
 </div>
 
 <div>
-	<h3>HTML</h3>
-	<pre>{@html html}</pre>
-</div>
-
-<div>
-	<h3>Data</h3>
-	<pre>{@html data}</pre>
+	<h3>markup</h3>
+	<pre>{html}</pre>
 </div>

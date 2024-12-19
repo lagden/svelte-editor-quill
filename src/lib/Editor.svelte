@@ -1,30 +1,29 @@
 <script>
-// prettier-ignore
-let {
-	options = {},
-	data = '',
-	class: class_attr,
-} = $$restProps
+	let {
+		options = {},
+		onTextChange: cb = () => {},
+		class: class_attr,
+		children,
+	} = $props()
 
-function init(node) {
-	let off
-	import('./quill.js').then(({quill}) => {
-		off = quill(node, data, {
-			theme: 'snow',
-			...options,
+	function init(node) {
+		let off
+		import('./quill.js').then(({ quill }) => {
+			off = quill(node, cb, {
+				theme: 'snow',
+				...options,
+			})
 		})
-	})
-	return {
-		destroy() {
-			off && off()
-		},
+		return {
+			destroy() {
+				off?.()
+			},
+		}
 	}
-}
 </script>
 
-<div {...class_attr ? {class: class_attr} : {}}>
-	<div
-		use:init
-		on:text-change
-	></div>
+<div {...class_attr ? { class: class_attr } : {}}>
+	<div use:init>
+		{@render children?.()}
+	</div>
 </div>
