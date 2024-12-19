@@ -30,8 +30,6 @@ $ npm i @tadashi/svelte-editor-quill@3
 
 ## Usage
 
-Example via [StackBlitz](https://stackblitz.com/edit/vitejs-vite-ncteky?file=src%2FApp.svelte).
-
 ### options
 
 > Type: object\
@@ -46,47 +44,49 @@ See the more `options` [here](https://quilljs.com/docs/configuration/#options).
 
 Accept only paste plain text.
 
-### E.g.
+## E.g.
+
+Example via [StackBlitz](https://stackblitz.com/edit/vitejs-vite-ncteky?file=src%2FApp.svelte).
 
 ```svelte
 <script>
-	import { Editor } from '@tadashi/svelte-editor-quill'
+  import { Editor } from '@tadashi/svelte-editor-quill'
 
-	const options = {
-		theme: 'snow',
-		plainclipboard: true,
-	}
+  const options = {
+    theme: 'snow',
+    plainclipboard: true,
+  }
 
-	let html = $state('<h1>Go!!</h1><p><strong>Initial</strong> value.</p>')
-	let text = $state('')
+  let html = $state('<h1>Go!!</h1><p><strong>Initial</strong> value.</p>')
+  let text = $state('')
 
-	const onTextChange = (markup, plaintext) => {
-		html = markup
-		text = plaintext
-	}
+  const onTextChange = (markup, plaintext) => {
+    html = markup
+    text = plaintext
+  }
 </script>
 
 <svelte:head>
-	<link
-		rel="stylesheet"
-		href="https://unpkg.com/quill@2.0.3/dist/quill.snow.css"
-		crossorigin
-	/>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/quill@2.0.3/dist/quill.snow.css"
+    crossorigin
+  />
 </svelte:head>
 
 <Editor
-	{options}
-	{onTextChange}
+  {options}
+  {onTextChange}
 >{@html $state.snapshot(html)}</Editor>
 
 <div>
-	<h3>plaintext</h3>
-	<pre>{text}</pre>
+  <h3>plaintext</h3>
+  <pre>{text}</pre>
 </div>
 
 <div>
-	<h3>markup</h3>
-	<pre>{html}</pre>
+  <h3>markup</h3>
+  <pre>{html}</pre>
 </div>
 ```
 
